@@ -35,8 +35,14 @@ class RamdomNumber extends React.Component{
 
         this.setState({
             cout: cout +1,
-            convert: ""
+            inputValue: null
         })
+
+    dissableBtn = () =>{
+        if(this.state.inputValue === null || convert === number){
+            return 'btn-success dissable'
+        }return 'btn-success'
+    } 
     }
     render(){
         console.log(this.state.number)
@@ -48,13 +54,13 @@ class RamdomNumber extends React.Component{
                     <p>Tôi đã chọn một số random trong khoảng 1 đến 100, bạn có thể đoán được?</p>
                 </div>
                 {/* Body */}
-                <div className="body">
+                <div className="container">
                     <button onClick={this.newGame}>New game</button>
                     <h4>Số lần bạn đã đoán là:{this.state.cout}</h4>
                     <h4>Số bạn đoán là</h4>
-                    <input type="number" name="guess" id="guess" onChange={this.takeData} />
-                    <button className="btn-success" onClick={this.compareData}> Đoán </button>
-                    <p>You guess the number is small</p>
+                    <input type="number" name="guess" id="guess" onChange={this.takeData} value={this.state.inputValue}/>
+                    <button className={this.dissableBtn} onClick={this.compareData}> Đoán </button>
+                    <p>You guess the number is </p>
                 </div>
             </div>
         )
